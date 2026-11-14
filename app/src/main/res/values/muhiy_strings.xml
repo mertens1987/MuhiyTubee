@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="muhiy_support_title" translatable="false">Bize destek ol</string>
+    <string name="muhiy_support_message" translatable="false">MuhiyTube tamamen ücretsiz ve reklamsız. Bu uygulamayı bağımsız olarak geliştiriyorum. Beğendiysen bizi Instagram\'dan takip ederek ve arkadaşlarına önererek geliştiricimize destek olabilirsin. Desteğin yeni özellikler için en büyük motivasyonum!</string>
+    <string name="muhiy_support_subtitle" translatable="false">Geliştiricimize destek ol</string>
+    <string name="muhiy_support_instagram" translatable="false">Instagram\'da takip et</string>
+    <string name="muhiy_support_close" translatable="false">Şimdi değil</string>
+</resources>

@@ -183,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (final Exception e) {
             ErrorUtil.showUiErrorSnackbar(this, "Setting up drawer", e);
         }
+        showSupportDialogIfFirstRun();
         if (DeviceUtils.isTv(this)) {
             FocusOverlayView.setupFocusObserver(this);
         }
@@ -238,6 +239,40 @@ public class MainActivity extends AppCompatActivity {
         sharedPrefEditor.putBoolean(KEY_IS_IN_BACKGROUND, true).apply();
         Log.d(TAG, "App moved to background");
     }
+    /**
+     * Shows the "support the developer" panel once, the first time the app is opened.
+     */
+    private void showSupportDialogIfFirstRun() {
+        final String shownKey = "muhiy_support_dialog_shown";
+        if (sharedPreferences.getBoolean(shownKey, false)) {
+            return;
+        }
+        sharedPreferences.edit().putBoolean(shownKey, true).apply();
+
+        final View dialogView = getLayoutInflater().inflate(R.layout.dialog_support, null);
+        final androidx.appcompat.app.AlertDialog dialog =
+                new androidx.appcompat.app.AlertDialog.Builder(this)
+                        .setView(dialogView)
+                        .create();
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
+
+        dialogView.findViewById(R.id.muhiySupportInstagramButton).setOnClickListener(v -> {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        android.net.Uri.parse("https://www.instagram.com/muhiy.dev")));
+            } catch (final Exception e) {
+                Log.e(TAG, "Could not open Instagram link", e);
+            }
+            dialog.dismiss();
+        });
+        dialogView.findViewById(R.id.muhiySupportCloseButton)
+                .setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
+
     private void setupDrawer() throws ExtractionException {
         addDrawerMenuForCurrentService();
 
