@@ -46,6 +46,7 @@
 
     <org.schabi.newpipe.views.NewPipeTextView
         android:id="@+id/itemVideoTitleView"
+        android:fontFamily="sans-serif-medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"

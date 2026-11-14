@@ -20,6 +20,7 @@ import org.schabi.newpipe.extractor.StreamingService;
 import org.schabi.newpipe.extractor.exceptions.ExtractionException;
 import org.schabi.newpipe.fragments.BlankFragment;
 import org.schabi.newpipe.fragments.list.channel.ChannelFragment;
+import org.schabi.newpipe.fragments.list.home.HomeFeedFragment;
 import org.schabi.newpipe.fragments.list.kiosk.DefaultKioskFragment;
 import org.schabi.newpipe.fragments.list.kiosk.KioskFragment;
 import org.schabi.newpipe.fragments.list.playlist.PlaylistFragment;
@@ -165,7 +166,9 @@ public abstract class Tab {
         KIOSK(new KioskTab()),
         CHANNEL(new ChannelTab()),
         PLAYLIST(new PlaylistTab()),
-        FEEDGROUP(new FeedGroupTab());
+        FEEDGROUP(new FeedGroupTab()),
+        HOME_FEED(new HomeFeedTab()),
+        SHORTS(new ShortsTab());
 
         private final Tab tab;
 
@@ -282,6 +285,56 @@ public abstract class Tab {
         @Override
         public BookmarkFragment getFragment(final Context context) {
             return new BookmarkFragment();
+        }
+    }
+
+    public static class HomeFeedTab extends Tab {
+        public static final int ID = 10;
+
+        @Override
+        public int getTabId() {
+            return ID;
+        }
+
+        @Override
+        public String getTabName(final Context context) {
+            return context.getString(R.string.muhiy_home_title);
+        }
+
+        @DrawableRes
+        @Override
+        public int getTabIconRes(final Context context) {
+            return R.drawable.ic_yt_home;
+        }
+
+        @Override
+        public Fragment getFragment(final Context context) {
+            return HomeFeedFragment.getInstance(HomeFeedFragment.MODE_HOME);
+        }
+    }
+
+    public static class ShortsTab extends Tab {
+        public static final int ID = 11;
+
+        @Override
+        public int getTabId() {
+            return ID;
+        }
+
+        @Override
+        public String getTabName(final Context context) {
+            return context.getString(R.string.muhiy_shorts_title);
+        }
+
+        @DrawableRes
+        @Override
+        public int getTabIconRes(final Context context) {
+            return R.drawable.ic_yt_shorts;
+        }
+
+        @Override
+        public Fragment getFragment(final Context context) {
+            return HomeFeedFragment.getInstance(HomeFeedFragment.MODE_SHORTS);
         }
     }
 

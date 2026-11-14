@@ -20,7 +20,8 @@ public final class TabsJsonHelper {
     private static final String JSON_TABS_ARRAY_KEY = "tabs";
 
     private static final List<Tab> FALLBACK_INITIAL_TABS_LIST = List.of(
-            Tab.Type.DEFAULT_KIOSK.getTab(),
+            Tab.Type.HOME_FEED.getTab(),
+            Tab.Type.SHORTS.getTab(),
             Tab.Type.FEED.getTab(),
             Tab.Type.SUBSCRIPTIONS.getTab(),
             Tab.Type.BOOKMARKS.getTab());

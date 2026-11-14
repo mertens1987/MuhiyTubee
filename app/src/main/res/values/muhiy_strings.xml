@@ -5,4 +5,6 @@
     <string name="muhiy_support_subtitle" translatable="false">Geliştiricimize destek ol</string>
     <string name="muhiy_support_instagram" translatable="false">Instagram\'da takip et</string>
     <string name="muhiy_support_close" translatable="false">Şimdi değil</string>
+    <string name="muhiy_home_title" translatable="false">Ana Sayfa</string>
+    <string name="muhiy_shorts_title" translatable="false">Shorts</string>
 </resources>
